@@ -265,7 +265,7 @@ export function LanguageProvider({ children }) {
   const [language, setLanguage] = useState(() =>
     ["de", "en"].includes(localStorage.getItem("libtech_language"))
       ? localStorage.getItem("libtech_language")
-      : "de",
+      : "en",
   );
   useEffect(() => {
     document.documentElement.lang = language;
