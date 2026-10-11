@@ -1,0 +1,51 @@
+.system-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  display: grid;
+  place-items: center;
+  background: #08090b;
+  color: var(--color-text);
+  clip-path: inset(0);
+}
+.system-loader__panel {
+  width: min(18rem, calc(100vw - 3rem));
+}
+.system-loader__brand {
+  margin-bottom: 2.25rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+}
+.system-loader__title {
+  margin-bottom: 2.25rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+.system-loader__status {
+  min-height: 1rem;
+  margin-bottom: 0.75rem;
+  color: var(--color-text-secondary);
+  font-family: monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.1em;
+}
+.system-loader__progress {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.18);
+}
+.system-loader__progress i {
+  display: block;
+  width: 0;
+  height: 100%;
+  background: var(--color-text);
+}
+.system-loader__value {
+  margin-top: 0.75rem;
+  color: var(--color-text-secondary);
+  font-family: monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+  text-align: right;
+}

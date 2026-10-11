@@ -1,0 +1,5 @@
+.hud-panel {
+  border: 1px solid var(--color-border);
+  background: var(--color-panel);
+  padding: 1rem;
+}
