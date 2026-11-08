@@ -28,7 +28,8 @@
 .product-copy {
   position: relative;
   z-index: 2;
-  width: 35%;
+  min-width: 0;
+  width: min(38%, 34rem);
 }
 .product-eyebrow {
   margin-bottom: 1.75rem;
@@ -68,9 +69,9 @@
 .product-drone {
   position: absolute;
   top: 2%;
-  left: 57%;
+  left: 64%;
   z-index: 1;
-  width: min(72vw, 70rem);
+  width: min(54%, 70rem);
   height: 82vh;
   transform: translateX(-50%);
 }
@@ -145,6 +146,9 @@
   width: calc(100% - clamp(2.5rem, 8vw, 8rem));
   border-top: 1px solid var(--color-border);
 }
+.product-poster > * {
+  min-width: 0;
+}
 .product-spec {
   padding: 1rem 1.25rem 0;
   border-left: 1px solid var(--color-border);
@@ -195,8 +199,8 @@
     font-size: clamp(4rem, 10vw, 7rem);
   }
   .product-drone {
-    left: 59%;
-    width: 70vw;
+    left: 62%;
+    width: 58vw;
   }
 }
 @media (max-width: 759px) {
@@ -225,7 +229,7 @@
   }
   .product-drone {
     order: 2;
-    height: 25rem;
+    height: clamp(15rem, 60vw, 25rem);
   }
   .product-specs {
     order: 3;

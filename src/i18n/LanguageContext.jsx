@@ -10,7 +10,7 @@ const translations = {
     secureAccess: "Sicherer Zugang",
     systemAccess: "System-Zugang",
     accessIntro: "Autorisierter Zugang zur",
-    interface: "AERON X1 Systemschnittstelle.",
+    interface: "X650 Systemschnittstelle.",
     username: "Benutzername",
     password: "Passwort",
     enterSystem: "System betreten",
@@ -23,7 +23,7 @@ const translations = {
     perspective: "Für neue Perspektiven konzipiert.",
     explore: "System entdecken",
     specifications: "Spezifikationen anzeigen",
-    order: "X1 bestellen",
+    order: "X650 konfigurieren",
     flightSystem: "Flugsystem",
     systemOnline: "System online",
     battery: "Akku",
@@ -58,7 +58,6 @@ const translations = {
     operational: "Betriebsbereit",
     aircraftNav: "Fluggerät",
     systemsNav: "Systeme",
-    logout: "Abmelden",
     orderSystem: "Bestellsystem",
     confirmation: "Bestätigung",
     orderRequest: "Bestellanfrage",
@@ -66,7 +65,7 @@ const translations = {
     reference: "Referenz:",
     registered: "Ihre Konfiguration wurde registriert.",
     representative:
-      "Ein Vertreter von LIB TECH wird Sie mit Lieferinformationen kontaktieren.",
+      "Ein Vertreter von LIBTEC wird Sie mit Lieferinformationen kontaktieren.",
     close: "Schließen",
     orderConfiguration: "Bestellkonfiguration",
     firstName: "Vorname",
@@ -110,7 +109,7 @@ const translations = {
     secureAccess: "Secure access",
     systemAccess: "System access",
     accessIntro: "Authorized access to the",
-    interface: "AERON X1 systems interface.",
+    interface: "X650 systems interface.",
     username: "Username",
     password: "Password",
     enterSystem: "Enter system",
@@ -123,7 +122,7 @@ const translations = {
     perspective: "Built to extend your perspective.",
     explore: "Explore system",
     specifications: "View specifications",
-    order: "Order X1",
+    order: "Configure X650",
     flightSystem: "Flight system",
     systemOnline: "System online",
     battery: "Battery",
@@ -158,7 +157,6 @@ const translations = {
     operational: "Operational",
     aircraftNav: "Aircraft",
     systemsNav: "Systems",
-    logout: "Log out",
     orderSystem: "Order system",
     confirmation: "confirmation",
     orderRequest: "Order request",
@@ -166,7 +164,7 @@ const translations = {
     reference: "Reference:",
     registered: "Your configuration has been registered.",
     representative:
-      "An AERON representative will contact you with delivery information.",
+      "Review the X650 configuration before continuing with the manufacturer.",
     close: "Close",
     orderConfiguration: "Order configuration",
     firstName: "First name",
@@ -259,14 +257,134 @@ Object.assign(translations.en, {
   specMissionPlanning: "MISSION PLANNING",
 });
 
+Object.assign(translations.de, {
+  productName: "X650",
+  productFullName: "Holybro X650 Development Kit",
+  productCategory: "ENTWICKLUNGSPLATTFORM FÜR LUFTSYSTEME",
+  productDescription:
+    "Eine robuste Carbonfaser-Plattform für autonome Flugentwicklung, Integration und Nutzlasten.",
+  productTagline: "ENTWICKELT FÜR INTEGRATION / X650",
+  wheelbase: "RADSTAND",
+  flightTimeX650: "FLUGZEIT",
+  takeoffWeight: "MAX. ABHEBEGEWICHT",
+  payload: "NUTZLAST",
+  frame: "RAHMEN",
+  flightController: "FLUGSTEUERUNG",
+  gps: "GPS",
+  batteryCompatibility: "AKKUKOMPATIBILITÄT",
+  motorPropeller: "MOTOR / PROPELLER",
+  flightSystemTitle: "FLUGSYSTEM",
+  flightSystemDescription:
+    "Pixhawk-kompatible Entwicklungsplattform mit M10 GPS, SiK-Telemetrie und integrierter Stromverteilung.",
+  capabilityIntegration: "INTEGRATION",
+  capabilityIntegrationDescription:
+    "Geräumige Montageflächen und Schienensystem für Zubehör, Companion Computer und zusätzliche Nutzlasten.",
+  capabilityPayload: "NUTZLAST",
+  capabilityPayloadDescription:
+    "Bis zu 3,1 kg Nutzlast mit 6S-10000-mAh-Akku-Konfiguration. Konfigurationsabhängiger Maximalwert.",
+  capabilityDevelopment: "ENTWICKLUNG",
+  capabilityDevelopmentDescription:
+    "Vormontierte Antriebe, ESCs und LEDs mit steckbaren Anschlüssen für eine schnelle, lötfreie Montage.",
+  fieldPlatform: "ENTWICKLUNGSPLATTFORM",
+  technologyAirframe: "TRAGWERK",
+  technologyCarbonPlatform: "CARBONFASER-PLATTFORM",
+  technologyPowerSystem: "ENERGIESYSTEM",
+  technologyPowerIntegration: "ENERGIE & INTEGRATION",
+  technologyPayload: "NUTZLAST",
+  technologyPayloadCapacity: "NUTZLASTKAPAZITÄT",
+  technologyEndurance: "AUSDAUER",
+  technologyFlightEndurance: "FLUGAUSDAUER",
+  staticView: "STATISCHE ANSICHT",
+  officialNote:
+    "Werte gemäß Herstellerangaben; abhängig von Konfiguration und Nutzlast.",
+  specificationDisclaimer:
+    "* Maximales Abhebegewicht, Nutzlastkapazität und Flugausdauer hängen von Akkukonfiguration, Nutzlast, Betriebsbedingungen und Systemaufbau ab. Maximalwerte gelten nicht notwendigerweise gleichzeitig.",
+});
+Object.assign(translations.en, {
+  productName: "X650",
+  productFullName: "Holybro X650 Development Kit",
+  productCategory: "PROFESSIONAL DEVELOPMENT PLATFORM",
+  productDescription:
+    "A robust carbon fiber platform for flight development, integration and payload applications.",
+  productTagline: "ENGINEERED FOR INTEGRATION / X650",
+  wheelbase: "WHEELBASE",
+  flightTimeX650: "FLIGHT TIME",
+  takeoffWeight: "MAX. TAKEOFF WEIGHT",
+  payload: "PAYLOAD",
+  frame: "FRAME",
+  flightController: "FLIGHT CONTROLLER",
+  gps: "GPS",
+  batteryCompatibility: "BATTERY COMPATIBILITY",
+  motorPropeller: "MOTOR / PROPELLER",
+  flightSystemTitle: "FLIGHT SYSTEM",
+  flightSystemDescription:
+    "Pixhawk-compatible development platform with M10 GPS, SiK telemetry and integrated power distribution.",
+  capabilityIntegration: "INTEGRATION",
+  capabilityIntegrationDescription:
+    "Spacious mounting surfaces and rail system for accessories, companion computers and additional payloads.",
+  capabilityPayload: "PAYLOAD",
+  capabilityPayloadDescription:
+    "Up to 3.1 kg payload with the 6S 10000 mAh battery configuration. Configuration-dependent maximum.",
+  capabilityDevelopment: "DEVELOPMENT",
+  capabilityDevelopmentDescription:
+    "Pre-installed motors, ESCs and LEDs with plug-in connections for fast, solder-free assembly.",
+  fieldPlatform: "DEVELOPMENT PLATFORM",
+  technologyAirframe: "AIRFRAME",
+  technologyCarbonPlatform: "CARBON FIBER PLATFORM",
+  technologyPowerSystem: "POWER SYSTEM",
+  technologyPowerIntegration: "POWER & INTEGRATION",
+  technologyPayload: "PAYLOAD",
+  technologyPayloadCapacity: "PAYLOAD CAPACITY",
+  technologyEndurance: "ENDURANCE",
+  technologyFlightEndurance: "FLIGHT ENDURANCE",
+  staticView: "STATIC VIEW",
+  officialNote:
+    "Values follow manufacturer specifications and depend on configuration and payload.",
+  specificationDisclaimer:
+    "* Maximum takeoff weight, payload capacity, and flight endurance depend on battery configuration, payload, operating conditions, and system setup. Maximum values do not necessarily apply simultaneously.",
+});
+
+Object.assign(translations.de, {
+  systemStatus: "Systemstatus",
+});
+Object.assign(translations.en, {
+  systemStatus: "System status",
+});
+
+Object.assign(translations.de, {
+  orderCloseLabel: "Bestellkonfiguration schließen",
+  orderConfigurationWord: "Konfiguration",
+  orderFeatureWheelbase: "650 MM Radstand",
+  orderFeatureBattery: "6S LiPo kompatibel",
+  orderFeaturePayload: "Bis 3,1 KG Nutzlast*",
+  countryOther: "Anderes Land",
+  quantityDecrease: "Menge verringern",
+  quantityIncrease: "Menge erhöhen",
+  onRequest: "Auf Anfrage",
+});
+Object.assign(translations.en, {
+  orderCloseLabel: "Close order configuration",
+  orderConfigurationWord: "Configuration",
+  orderFeatureWheelbase: "650 MM wheelbase",
+  orderFeatureBattery: "6S LiPo compatible",
+  orderFeaturePayload: "Up to 3.1 KG payload*",
+  countryOther: "Other",
+  quantityDecrease: "Decrease quantity",
+  quantityIncrease: "Increase quantity",
+  onRequest: "On request",
+});
+
 const LanguageContext = createContext(null);
 
 export function LanguageProvider({ children }) {
-  const [language, setLanguage] = useState(() =>
-    ["de", "en"].includes(localStorage.getItem("libtech_language"))
-      ? localStorage.getItem("libtech_language")
-      : "en",
-  );
+  const [language, setLanguage] = useState(() => {
+    try {
+      const stored = localStorage.getItem("libtech_language");
+      return ["de", "en"].includes(stored) ? stored : "en";
+    } catch {
+      return "en";
+    }
+  });
   useEffect(() => {
     document.documentElement.lang = language;
     document.documentElement.dataset.language = language;
@@ -275,7 +393,11 @@ export function LanguageProvider({ children }) {
     () => ({
       language,
       setLanguage: (next) => {
-        localStorage.setItem("libtech_language", next);
+        try {
+          localStorage.setItem("libtech_language", next);
+        } catch {
+          /* storage unavailable */
+        }
         setLanguage(next);
       },
       t: (key) => translations[language][key] ?? key,

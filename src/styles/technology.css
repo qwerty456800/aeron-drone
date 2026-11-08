@@ -44,7 +44,7 @@
   position: absolute;
   top: 50%;
   left: 58%;
-  width: min(61vw, 58rem);
+  width: min(66vw, 64rem);
   aspect-ratio: 1.15;
   transform: translate(-50%, -50%);
 }
@@ -103,7 +103,7 @@
 }
 .technology-drone {
   position: absolute;
-  inset: 3% 2%;
+  inset: 0 -2% 0 2%;
   z-index: 1;
 }
 .technology-drone canvas {
@@ -473,6 +473,10 @@
   font-size: 0.58rem;
   letter-spacing: 0.1em;
 }
+.technology-section[data-stage="2"] .technology-scan span {
+  right: auto;
+  left: 0;
+}
 .technology-callout {
   padding: 0.6rem 0.75rem;
   font-size: 0.65rem;
@@ -542,7 +546,7 @@
 .technology-power span,
 .technology-transmission span {
   position: absolute;
-  color: var(--color-text-secondary);
+  color: #aeb4bc;
   font-family: monospace;
   font-size: 0.56rem;
   letter-spacing: 0.1em;

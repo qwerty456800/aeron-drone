@@ -9,7 +9,7 @@ function Closing() {
       <section className="closing-section" id="closing">
         <div className="container closing-container">
           <div className="closing-copy">
-            <p className="eyebrow">06 / LIB TECH</p>
+            <p className="eyebrow">06 / LIBTEC</p>
             <h2>
               {t("closing")
                 .split(" ")
@@ -21,7 +21,7 @@ function Closing() {
                 ))}
             </h2>
             <p>{t("closingText")}</p>
-            <span className="closing-id">AERON X1 / SERIES 01 / 2026</span>
+            <span className="closing-id">HOLYBRO X650 DEVELOPMENT KIT</span>
             <div className="closing-actions">
               <a href="#specifications">{t("viewSpecs")}</a>
             </div>
@@ -40,7 +40,7 @@ function Closing() {
               </a>
             </div>
             <div>
-              <span>System status</span>
+              <span>{t("systemStatus")}</span>
               <strong>{t("operational")}</strong>
             </div>
           </div>

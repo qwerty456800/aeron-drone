@@ -104,11 +104,10 @@
   text-transform: uppercase;
 }
 .site-footer__brand {
+  display: block;
+  width: min(15rem, 35vw);
+  height: auto;
   color: var(--color-text);
-  font-family: Inter, Arial, sans-serif;
-  font-size: 0.9rem;
-  font-weight: 700;
-  letter-spacing: 0.2em;
 }
 .site-footer__nav {
   justify-content: flex-start;

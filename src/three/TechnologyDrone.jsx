@@ -76,10 +76,10 @@ const TechnologyDrone = forwardRef(function TechnologyDrone(_, ref) {
     return (
       <div
         className="technology-drone technology-drone--fallback"
-        aria-label="AERON X1 static technical view"
+        aria-label="X650 static technical view"
       >
         <div className="technology-drone__fallback-body">
-          <span>AERON X1</span>
+          <span>X650</span>
           <i />
         </div>
         <small>STATIC TECHNICAL VIEW</small>
@@ -90,7 +90,7 @@ const TechnologyDrone = forwardRef(function TechnologyDrone(_, ref) {
   return (
     <div
       className="technology-drone"
-      aria-label="AERON X1 technical inspection model"
+      aria-label="X650 technical development model"
     >
       <Canvas
         camera={{ fov: 34, position: [0, 0.15, 6.4] }}

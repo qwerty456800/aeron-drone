@@ -1,6 +1,6 @@
 import { Suspense, useMemo } from "react";
-import { Canvas } from "@react-three/fiber";
-import { useGLTF } from "@react-three/drei";
+import { Canvas, useThree } from "@react-three/fiber";
+import { PerspectiveCamera, useGLTF } from "@react-three/drei";
 import * as THREE from "three";
 import { isWebGLAvailable } from "./webgl.js";
 
@@ -28,22 +28,45 @@ function Model() {
   return <primitive object={normalized} />;
 }
 
+const CAMERA_FOV = 35;
+const BASE_DISTANCE = 6.4;
+// Half of the model's on-screen width (normalized model × 1.12 group scale) plus margin.
+const FRAMED_HALF_WIDTH = 2.25;
+
+// Pull the camera back on narrow (portrait) canvases so the propellers aren't clipped.
+function FitCamera() {
+  const width = useThree((state) => state.size.width);
+  const height = useThree((state) => state.size.height);
+  const aspect = width / height || 1;
+  const halfFov = THREE.MathUtils.degToRad(CAMERA_FOV / 2);
+  const distance = Math.max(
+    BASE_DISTANCE,
+    FRAMED_HALF_WIDTH / (Math.tan(halfFov) * aspect),
+  );
+  return (
+    <PerspectiveCamera
+      makeDefault
+      fov={CAMERA_FOV}
+      position={[0, 0.15, distance]}
+    />
+  );
+}
+
 function ProductDrone() {
   if (!isWebGLAvailable()) {
     return (
       <div
         className="product-drone product-drone--fallback"
-        aria-label="AERON X1 static product presentation"
+        aria-label="X650 static product presentation"
       >
-        <span>AERON X1 / STATIC VIEW</span>
+        <span>X650 / STATIC VIEW</span>
       </div>
     );
   }
 
   return (
-    <div className="product-drone" aria-label="AERON X1 product presentation">
+    <div className="product-drone" aria-label="X650 product presentation">
       <Canvas
-        camera={{ fov: 35, position: [0, 0.15, 6.4] }}
         dpr={[1, 2]}
         gl={{
           antialias: true,
@@ -57,6 +80,7 @@ function ProductDrone() {
           gl.toneMappingExposure = 1;
         }}
       >
+        <FitCamera />
         <ambientLight intensity={1.45} />
         <directionalLight
           position={[3, 4, 5]}

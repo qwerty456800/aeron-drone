@@ -127,7 +127,7 @@ function SystemLoader() {
         { clipPath: "inset(0 0 0 100%)", duration: 0.65, ease: "power3.inOut" },
         "-=0.52",
       );
-    }, loader);
+    });
 
     return () => {
       context.revert();
@@ -138,7 +138,7 @@ function SystemLoader() {
   return (
     <div className="system-loader" ref={loader} aria-live="polite">
       <div className="system-loader__panel">
-        <div className="system-loader__brand">LIB TECH</div>
+        <div className="system-loader__brand">LIBTEC</div>
         <div className="system-loader__title">System initialization</div>
         <div className="system-loader__status" ref={status}>
           BOOT / CORE SYSTEM

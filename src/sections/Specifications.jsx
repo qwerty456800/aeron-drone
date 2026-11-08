@@ -5,76 +5,132 @@ import { useLanguage } from "../i18n/LanguageContext.jsx";
 const groups = [
   {
     number: "01",
-    titleKey: "specImaging",
+    title: { en: "Frame", de: "Rahmen" },
     items: [
-      ["specCamera", { en: "48 MP", de: "48 MP" }],
-      ["specVideo", { en: "4K", de: "4K" }],
-      ["specFormat", { en: "RAW + JPEG", de: "RAW + JPEG" }],
-      ["specStabilization", { en: "3-Axis", de: "3-Achs" }],
+      ["Wheelbase", "650 mm"],
+      ["Frame", { en: "Carbon fiber", de: "Carbonfaser" }],
+      ["Motors", "Tmotor MN4014 KV330"],
+      [
+        "Propellers",
+        { en: "Gemfan 1555 carbon fiber", de: "Gemfan 1555 Carbonfaser" },
+      ],
     ],
   },
   {
     number: "02",
-    titleKey: "specFlight",
+    title: { en: "Flight", de: "Flug" },
     items: [
-      ["specMaxFlight", { en: "42 MIN", de: "42 MIN" }],
-      ["specMaxSpeed", { en: "72 KM/H", de: "72 KM/H" }],
-      ["specControlRange", { en: "15 KM", de: "15 KM" }],
-      ["specPositioning", { en: "GPS + GNSS", de: "GPS + GNSS" }],
+      ["Flight time", "30 MIN*"],
+      ["Max takeoff weight", "6.3 KG*"],
+      ["Payload", { en: "Up to 3.1 kg*", de: "Bis 3,1 kg*" }],
+      ["Battery", "6S 5000–12000 mAh LiPo"],
     ],
   },
   {
     number: "03",
-    titleKey: "specAircraft",
+    title: { en: "Flight control", de: "Flugsteuerung" },
     items: [
-      ["specAirframe", { en: "Composite", de: "Verbundwerkstoff" }],
-      [
-        "specPropulsion",
-        { en: "4-Motor Electric", de: "4-Motor-Elektroantrieb" },
-      ],
-      [
-        "specFlightControl",
-        { en: "Real-time stabilization", de: "Echtzeit-Stabilisierung" },
-      ],
-      [
-        "specOperatingMode",
-        { en: "Manual / Assisted / Auto", de: "Manuell / Assistiert / Auto" },
-      ],
+      ["Controller", "Pixhawk 6C / 6X"],
+      ["GPS", "M10 GPS"],
+      ["Telemetry", "SiK 433 / 915 MHz"],
+      ["Firmware", "PX4 / ArduPilot compatible"],
     ],
   },
   {
     number: "04",
-    titleKey: "specPower",
+    title: { en: "Power & frame", de: "Energie & Rahmen" },
     items: [
-      ["specBattery", { en: "High-density Li-ion", de: "Hochdichte-Li-Ion" }],
+      ["Battery compatibility", "6S LiPo / XT60"],
+      ["Power distribution", "XT60 / XT30 PDB"],
       [
-        "specPowerSystem",
-        { en: "Intelligent management", de: "Intelligentes Management" },
+        "Arm connectors",
+        { en: "Foldable aluminum", de: "Klappbares Aluminium" },
       ],
-      ["specCharging", { en: "USB-C / Dock", de: "USB-C / Dock" }],
-      ["specBatteryStatus", { en: "Live telemetry", de: "Live-Telemetrie" }],
+      [
+        "Assembly",
+        { en: "No soldering required", de: "Keine Lötarbeiten erforderlich" },
+      ],
     ],
   },
   {
     number: "05",
-    titleKey: "specSystem",
+    title: { en: "Integration", de: "Integration" },
     items: [
-      ["specTelemetry", { en: "Live", de: "Live" }],
-      ["specNavigation", { en: "GPS / GNSS", de: "GPS / GNSS" }],
-      ["specDataLink", { en: "Secure digital", de: "Sicher digital" }],
-      ["specMissionPlanning", { en: "Supported", de: "Unterstützt" }],
+      [
+        "Platform",
+        {
+          en: "Companion computer ready",
+          de: "Für Companion Computer vorbereitet",
+        },
+      ],
+      ["Mounting plate", "120 × 128 mm"],
+      ["Rail system", "Dual 10 mm × 320 mm"],
+      [
+        "Note",
+        {
+          en: "Configuration-dependent values",
+          de: "Konfigurationsabhängige Werte",
+        },
+      ],
     ],
   },
 ];
+
+const labels = {
+  en: {
+    Frame: "FRAME",
+    Motors: "MOTORS",
+    Propellers: "PROPELLERS",
+    Wheelbase: "WHEELBASE",
+    "Flight time": "FLIGHT TIME",
+    "Max takeoff weight": "MAX. TAKEOFF WEIGHT",
+    Payload: "PAYLOAD",
+    Battery: "BATTERY",
+    Controller: "CONTROLLER",
+    GPS: "GPS",
+    Telemetry: "TELEMETRY",
+    Firmware: "FIRMWARE",
+    "Battery compatibility": "BATTERY COMPATIBILITY",
+    "Power distribution": "POWER DISTRIBUTION",
+    "Arm connectors": "ARM CONNECTORS",
+    Assembly: "ASSEMBLY",
+    Platform: "PLATFORM",
+    "Mounting plate": "MOUNTING PLATE",
+    "Rail system": "RAIL SYSTEM",
+    Note: "NOTE",
+  },
+  de: {
+    Frame: "RAHMEN",
+    Motors: "MOTOREN",
+    Propellers: "PROPELLER",
+    Wheelbase: "RADSTAND",
+    "Flight time": "FLUGZEIT",
+    "Max takeoff weight": "MAX. ABHEBEGEWICHT",
+    Payload: "NUTZLAST",
+    Battery: "AKKU",
+    Controller: "FLUGSTEUERUNG",
+    GPS: "GPS",
+    Telemetry: "TELEMETRIE",
+    Firmware: "FIRMWARE",
+    "Battery compatibility": "AKKUKOMPATIBILITÄT",
+    "Power distribution": "STROMVERTEILUNG",
+    "Arm connectors": "ARMVERBINDER",
+    Assembly: "MONTAGE",
+    Platform: "PLATTFORM",
+    "Mounting plate": "MONTAGEPLATTE",
+    "Rail system": "SCHIENENSYSTEM",
+    Note: "HINWEIS",
+  },
+};
 
 function Specifications() {
   const { language, t } = useLanguage();
   const localizedGroups = groups.map((group) => ({
     number: group.number,
-    title: t(group.titleKey),
-    items: group.items.map(([labelKey, value]) => [
-      t(labelKey),
-      value[language],
+    title: group.title[language],
+    items: group.items.map(([label, value]) => [
+      labels[language][label] || label,
+      typeof value === "string" ? value : value[language],
     ]),
   }));
   return (
@@ -84,26 +140,26 @@ function Specifications() {
           <div>
             <p className="eyebrow">05 / {t("specification")}</p>
             <h2>
-              X1
+              X650
               <br />
               {t("technical")}
               <br />
               <strong>{t("specification")}</strong>
             </h2>
-            <p>{t("architecture")}</p>
+            <p>{t("officialNote")}</p>
           </div>
           <dl>
             <div>
               <dt>{t("model")}</dt>
-              <dd>AERON X1</dd>
+              <dd>X650</dd>
             </div>
             <div>
               <dt>{t("series")}</dt>
-              <dd>01</dd>
+              <dd>DEVELOPMENT KIT</dd>
             </div>
             <div>
               <dt>Status</dt>
-              <dd>{t("production")}</dd>
+              <dd>REFERENCE</dd>
             </div>
             <div>
               <dt>{t("year")}</dt>
@@ -116,9 +172,12 @@ function Specifications() {
             <SpecificationGroup key={group.number} {...group} />
           ))}
         </div>
+        <p className="specifications-disclaimer">
+          {t("specificationDisclaimer")}
+        </p>
         <footer className="specifications-footer">
-          <span>AERON X1 / {t("aerialSystem").toUpperCase()}</span>
-          <span>{t("precision").toUpperCase()} / SERIES 01</span>
+          <span>HOLYBRO X650 DEVELOPMENT KIT</span>
+          <span>{t("productTagline")}</span>
         </footer>
       </div>
     </section>

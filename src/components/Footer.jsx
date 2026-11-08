@@ -6,9 +6,13 @@ function Footer() {
     <footer className="site-footer">
       <div className="container">
         <div className="site-footer__main">
-          <span className="site-footer__brand">LIB TECH</span>
-          <span>X1 / {t("aerialSystem").toUpperCase()}</span>
-          <span>© 2026 LIB TECH</span>
+          <img
+            className="site-footer__brand"
+            src="/libtec-logo.svg"
+            alt="LIBTEC — IDEAS TO SOLUTIONS"
+          />
+          <span>HOLYBRO X650 DEVELOPMENT KIT</span>
+          <span>© 2026 LIBTEC</span>
         </div>
         <nav className="site-footer__nav" aria-label="Footer navigation">
           <a href="#products">{t("aircraftNav")}</a>

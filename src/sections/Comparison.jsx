@@ -12,26 +12,24 @@ const capabilities = [
     title: {
       de: (
         <>
-          Luftbild
-          <br />
-          aufnahmen
+          Integration
+          <br />& Montage
         </>
       ),
       en: (
         <>
-          Aerial
-          <br />
-          imaging
+          Integration
+          <br />& Mounting
         </>
       ),
     },
     description: {
-      de: "Hochauflösende Luftbilder mit stabilisierter Präzision auch in komplexen Umgebungen erfassen.",
-      en: "Capture high-resolution aerial imagery with stabilized precision across complex environments.",
+      de: "Geräumige Montageflächen und Schienensysteme erleichtern die Integration von Zubehör und Companion Computern.",
+      en: "Spacious mounting surfaces and rail systems support accessories and companion computer integration.",
     },
     metadata: {
-      de: ["48 MP Sensor", "RAW + 4K", "3-Achs-Stabilisierung"],
-      en: ["48 MP sensor", "Raw + 4K", "3-axis stabilization"],
+      de: ["Schienensystem", "Carbonfaser-Rahmen", "Lötfreie Montage"],
+      en: ["Rail mounting", "Carbon fiber frame", "Solder-free assembly"],
     },
     visual: "imaging",
   },
@@ -40,30 +38,24 @@ const capabilities = [
     title: {
       de: (
         <>
-          Industrie
-          <br />
-          inspektion
+          Nutzlast &<br />
+          Flugzeit
         </>
       ),
       en: (
         <>
-          Industrial
-          <br />
-          inspection
+          Payload &<br />
+          Endurance
         </>
       ),
     },
     description: {
-      de: "Strukturen und Infrastruktur aus schwierigen Winkeln inspizieren und dabei eine stabile Flugposition halten.",
-      en: "Inspect structures and infrastructure from difficult angles while maintaining a stable operational position.",
+      de: "Konfigurationsabhängige Nutzlast und Flugzeit für Entwicklungs- und Integrationsaufgaben.",
+      en: "Configuration-dependent payload and flight time for development and integration work.",
     },
     metadata: {
-      de: [
-        "15 KM Steuerreichweite",
-        "Live-Telemetrie",
-        "Präzisionsschwebeflug",
-      ],
-      en: ["15 KM control range", "Live telemetry", "Precision hover"],
+      de: ["Bis 3,1 KG*", "30 MIN*", "6S LiPo"],
+      en: ["Up to 3.1 KG*", "30 MIN*", "6S LiPo"],
     },
     visual: "inspection",
   },
@@ -72,24 +64,28 @@ const capabilities = [
     title: {
       de: (
         <>
-          Kartierung
-          <br />& Vermessung
+          Flugsteuerung
+          <br />&<br />
+          Telemetrie
         </>
       ),
       en: (
         <>
-          Mapping
-          <br />& survey
+          Flight
+          <br />
+          control &
+          <br />
+          telemetry
         </>
       ),
     },
     description: {
-      de: "Konsistente Luftdaten über große Flächen für Kartierung, Vermessung und räumliche Analysen erfassen.",
-      en: "Collect consistent aerial data across large areas for mapping, surveying and spatial analysis.",
+      de: "Pixhawk, M10 GPS und SiK-Telemetrie als flexible Basis für PX4- und ArduPilot-Projekte.",
+      en: "Pixhawk, M10 GPS and SiK telemetry as a flexible base for PX4 and ArduPilot projects.",
     },
     metadata: {
-      de: ["42 MIN Flugzeit", "GPS-Positionierung", "Autonome Routen"],
-      en: ["42 MIN flight", "GPS positioning", "Autonomous routes"],
+      de: ["Pixhawk 6C / 6X", "M10 GPS", "SiK 433 / 915 MHz"],
+      en: ["Pixhawk 6C / 6X", "M10 GPS", "SiK 433 / 915 MHz"],
     },
     visual: "mapping",
   },
@@ -104,56 +100,122 @@ function CapabilityVisual({ type }) {
       : type === "inspection"
         ? t("structuralScan")
         : t("surveyGrid");
+  const diagram = {
+    imaging: (
+      <svg
+        viewBox="0 0 640 360"
+        role="img"
+        aria-label="Conceptual X650 integration frame layout"
+      >
+        <g className="capability-svg__secondary">
+          <circle cx="320" cy="180" r="104" />
+          <circle cx="320" cy="180" r="72" />
+          <path d="M320 180 152 82M320 180 488 82M320 180 152 278M320 180 488 278" />
+          <path d="M118 180h404M320 46v268" />
+        </g>
+        <g className="capability-svg__primary">
+          <rect x="255" y="115" width="130" height="130" />
+          <rect x="280" y="140" width="80" height="80" />
+          <circle cx="320" cy="180" r="18" />
+          <path d="M248 108h-26v26M392 108h26v26M248 252h-26v-26M392 252h26v-26" />
+        </g>
+        <g className="capability-svg__label">
+          <text x="66" y="72">
+            MOUNT / ZONE A
+          </text>
+          <text x="414" y="302">
+            INTEGRATION PLANE
+          </text>
+        </g>
+      </svg>
+    ),
+    inspection: (
+      <svg
+        viewBox="0 0 640 360"
+        role="img"
+        aria-label="X650 payload and endurance specifications"
+      >
+        <g className="capability-svg__secondary">
+          <path d="M72 88h496M72 180h496M72 272h496" />
+          <path d="M72 54v252M568 54v252" />
+        </g>
+        <g className="capability-svg__primary">
+          <path d="M72 88h22M72 180h22M72 272h22" />
+          <path d="M178 88h270M178 180h270M178 272h270" />
+          <circle cx="178" cy="88" r="5" />
+          <circle cx="178" cy="180" r="5" />
+          <circle cx="178" cy="272" r="5" />
+        </g>
+        <g className="capability-svg__label">
+          <text x="104" y="68">
+            PAYLOAD CAPACITY
+          </text>
+          <text x="470" y="94">
+            UP TO 3.1 KG*
+          </text>
+          <text x="104" y="160">
+            FLIGHT ENDURANCE
+          </text>
+          <text x="470" y="186">
+            UP TO 30 MIN*
+          </text>
+          <text x="104" y="252">
+            BATTERY COMPATIBILITY
+          </text>
+          <text x="470" y="278">
+            6S LIPO
+          </text>
+        </g>
+      </svg>
+    ),
+    mapping: (
+      <svg
+        viewBox="0 0 640 360"
+        role="img"
+        aria-label="Conceptual X650 flight control and telemetry architecture"
+      >
+        <g className="capability-svg__secondary">
+          <path d="M110 180h420M320 58v244" />
+          <path d="M180 102 460 258M180 258 460 102" />
+        </g>
+        <g className="capability-svg__primary">
+          <rect x="268" y="138" width="104" height="84" />
+          <path d="M268 160h-90v-44M372 160h90v-44M268 200h-90v44M372 200h90v44" />
+          <circle cx="160" cy="116" r="10" />
+          <circle cx="480" cy="116" r="10" />
+          <circle cx="160" cy="244" r="10" />
+          <circle cx="480" cy="244" r="10" />
+        </g>
+        <g className="capability-svg__label">
+          <text x="284" y="174">
+            PIXHAWK
+          </text>
+          <text x="284" y="194">
+            FLIGHT CONTROL
+          </text>
+          <text x="92" y="92">
+            M10 GPS
+          </text>
+          <text x="430" y="92">
+            SiK TELEMETRY
+          </text>
+          <text x="86" y="280">
+            POWER DISTRIBUTION
+          </text>
+        </g>
+      </svg>
+    ),
+  }[type];
+
   return (
     <div
       className={`capability-visual capability-visual--${type}`}
       aria-hidden="true"
     >
       <span className="visual-coordinate">
-        LIB TECH / {t("fieldData")} / {id}
+        LIBTEC / {t("fieldData")} / {id}
       </span>
-      {type === "imaging" && (
-        <>
-          <i className="imaging-terrain imaging-terrain--one" />
-          <i className="imaging-terrain imaging-terrain--two" />
-          <i className="imaging-terrain imaging-terrain--three" />
-          <i className="imaging-road" />
-          <i className="imaging-building imaging-building--one" />
-          <i className="imaging-building imaging-building--two" />
-          <i className="imaging-building imaging-building--three" />
-          <i className="imaging-capture-area" />
-          <i className="imaging-target" />
-          <i className="imaging-direction" />
-        </>
-      )}
-      {type === "inspection" && (
-        <>
-          <i className="inspection-tower" />
-          <i className="inspection-cross inspection-cross--one" />
-          <i className="inspection-cross inspection-cross--two" />
-          <i className="inspection-cross inspection-cross--three" />
-          <span className="inspection-label inspection-label--one">P01</span>
-          <span className="inspection-label inspection-label--two">P02</span>
-          <span className="inspection-label inspection-label--three">P03</span>
-          <i className="inspection-scan" />
-        </>
-      )}
-      {type === "mapping" && (
-        <>
-          <i className="mapping-boundary" />
-          <i className="mapping-terrain mapping-terrain--one" />
-          <i className="mapping-terrain mapping-terrain--two" />
-          <i className="mapping-route mapping-route--one" />
-          <i className="mapping-route mapping-route--two" />
-          <i className="mapping-route mapping-route--three" />
-          <i className="mapping-route mapping-route--four" />
-          <i className="mapping-waypoint mapping-waypoint--start" />
-          <i className="mapping-waypoint mapping-waypoint--mid" />
-          <i className="mapping-waypoint mapping-waypoint--end" />
-          <span className="mapping-start-label">{t("start")}</span>
-          <span className="mapping-end-label">{t("end")}</span>
-        </>
-      )}
+      {diagram}
       <span className="visual-label">{label}</span>
     </div>
   );
@@ -196,13 +258,13 @@ function Comparison() {
     <section className="capabilities-section" id="capabilities">
       <div className="container capabilities-container">
         <header className="capabilities-header">
-          <p className="eyebrow">04 / {t("capabilities")}</p>
+          <p className="eyebrow">04 / X650</p>
           <h2>
-            {t("builtFor")}
+            {t("capabilityIntegration")}
             <br />
-            <strong>{t("mission")}</strong>
+            <strong>{t("fieldPlatform")}</strong>
           </h2>
-          <p>{t("oneAircraft")}</p>
+          <p>{t("officialNote")}</p>
           <span className="capabilities-divider" />
         </header>
         <div className="capability-list">

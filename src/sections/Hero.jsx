@@ -8,24 +8,15 @@ function Hero() {
     <section className="hero-section startup-target" id="top">
       <div className="hero-grid container">
         <div className="hero-copy startup-target">
-          <p className="eyebrow">LIB TECH / PROFESSIONAL AERIAL SYSTEM</p>
+          <p className="eyebrow">LIBTEC / {t("productCategory")}</p>
           <p className="hero-index">
-            SYS / 01 <span>X1-2026</span>
+            KIT / 01 <span>X650 / DEVELOPMENT</span>
           </p>
           <h1 className="startup-target">
-            <span>AERON</span>
-            <strong>X1</strong>
+            <span>X650</span>
           </h1>
-          <p className="hero-product-type">
-            {t("professional").toUpperCase()}
-            <br />
-            {t("aerialSystem").toUpperCase()}
-          </p>
-          <p className="hero-description">
-            {t("precision")}
-            <br />
-            {t("perspective")}
-          </p>
+          <p className="hero-product-type">{t("productFullName")}</p>
+          <p className="hero-description">{t("productDescription")}</p>
           <div className="hero-actions startup-target">
             <a className="button button--primary" href="#technology">
               {t("explore")} <span>↗</span>
@@ -35,13 +26,13 @@ function Hero() {
 
         <div
           className="hero-product startup-target"
-          aria-label="AERON X1 product presentation"
+          aria-label="Holybro X650 Development Kit product presentation"
         >
           <span className="product-coordinate product-coordinate--top">
             LAT 48.7758 / LON 9.1829
           </span>
           <span className="product-coordinate product-coordinate--side">
-            X1 / 00:00:42
+            X650 / DEVELOPMENT KIT
           </span>
           <div className="hud-crosshair hud-crosshair--top" />
           <div className="hud-crosshair hud-crosshair--bottom" />
@@ -49,21 +40,21 @@ function Hero() {
           <div className="hud-orbit hud-orbit--small startup-line" />
           <DroneViewer />
           <div className="product-readouts startup-target">
-            <span>CAM / READY</span>
-            <span>GPS / LOCK</span>
-            <span>SIGNAL / 98%</span>
-            <span>X1 / ACTIVE</span>
+            <span>GPS / M10</span>
+            <span>PIXHAWK / COMPATIBLE</span>
+            <span>POWER / 6S LIPO</span>
+            <span>X650 / PLATFORM</span>
           </div>
-          <span className="product-label">AERON X1 / READY</span>
+          <span className="product-label">X650 / READY</span>
         </div>
 
         <aside
           className="telemetry startup-target"
-          aria-label="Flight system telemetry"
+          aria-label="X650 flight system telemetry"
         >
           <div className="telemetry__heading">
-            <span>{t("flightSystem")}</span>
-            <span className="telemetry__id">FS-X1 / 001</span>
+            <span>{t("flightSystemTitle")}</span>
+            <span className="telemetry__id">FS-X650 / 001</span>
             <span className="online">
               <i /> {t("systemOnline")}
             </span>
@@ -71,16 +62,16 @@ function Hero() {
           <div className="telemetry__battery telemetry__row">
             <div className="telemetry-row-main">
               <span className="telemetry__label">
-                <b>01</b> Battery
+                <b>01</b> {t("batteryCompatibility")}
               </span>
               <span className="telemetry-readout telemetry-readout--percent">
                 <span
                   className="telemetry-number telemetry-value"
-                  data-final="94"
+                  data-final="6"
                 >
-                  94
+                  6
                 </span>
-                <span className="telemetry-unit">%</span>
+                <span className="telemetry-unit">S LIPO</span>
               </span>
             </div>
             <div className="telemetry__bar">
@@ -89,95 +80,79 @@ function Hero() {
           </div>
           <div className="telemetry__row telemetry-row-main">
             <span className="telemetry__label">
-              <b>02</b> Altitude limit
+              <b>02</b> {t("takeoffWeight")}
             </span>
             <span className="telemetry-readout">
-              <span
-                className="telemetry-number telemetry-value"
-                data-final="5000"
-              >
-                5000
-              </span>
-              <span className="telemetry-unit">M</span>
+              <span className="telemetry-number">6.3</span>
+              <span className="telemetry-unit">KG</span>
             </span>
           </div>
           <div className="telemetry__row telemetry-row-main">
             <span className="telemetry__label">
-              <b>03</b> Control range
+              <b>03</b> {t("payload")}
             </span>
             <span className="telemetry-readout">
-              <span
-                className="telemetry-number telemetry-value"
-                data-final="15"
-              >
-                15
-              </span>
-              <span className="telemetry-unit">KM</span>
+              <span className="telemetry-number">3.1</span>
+              <span className="telemetry-unit">KG</span>
             </span>
           </div>
           <div className="telemetry__row telemetry-row-main">
             <span className="telemetry__label">
-              <b>04</b> Max speed
+              <b>04</b> {t("wheelbase")}
             </span>
             <span className="telemetry-readout">
               <span
                 className="telemetry-number telemetry-value"
-                data-final="72"
+                data-final="650"
               >
-                72
+                650
               </span>
-              <span className="telemetry-unit">KM/H</span>
+              <span className="telemetry-unit">MM</span>
             </span>
           </div>
           <div className="telemetry__footer">
             <span>LINK / ACTIVE</span>
             <span>
-              <i /> READY
+              <i /> CONFIGURED
             </span>
           </div>
         </aside>
 
         <div
           className="hero-specs startup-target"
-          aria-label="AERON X1 specifications"
+          aria-label="X650 specifications"
         >
           <div>
-            <span>Camera</span>
+            <span>{t("wheelbase")}</span>
             <strong>
-              <span className="spec-value" data-final="48">
-                48
+              <span className="spec-value" data-final="650">
+                650
               </span>{" "}
-              <small>MP</small>
+              <small>mm</small>
             </strong>
           </div>
           <div>
-            <span>Flight time</span>
+            <span>{t("flightTimeX650")}</span>
             <strong>
-              <span className="spec-value" data-final="42">
-                42
+              <span className="spec-value" data-final="30">
+                30
               </span>{" "}
-              <small>min</small>
+              <small>min*</small>
             </strong>
           </div>
           <div>
-            <span>Max speed</span>
+            <span>{t("takeoffWeight")}</span>
             <strong>
-              <span className="spec-value" data-final="72">
-                72
-              </span>{" "}
-              <small>km/h</small>
+              <span>6.3</span> <small>kg*</small>
             </strong>
           </div>
           <div>
-            <span>Control range</span>
+            <span>{t("payload")}</span>
             <strong>
-              <span className="spec-value" data-final="15">
-                15
-              </span>{" "}
-              <small>km</small>
+              <span>3.1</span> <small>kg*</small>
             </strong>
           </div>
-          <span className="hero-specs__code">LIB TECH / FLIGHT DATA / 001</span>
+          <span className="hero-specs__code">LIBTEC / X650 DATA / 001</span>
         </div>
       </div>
     </section>

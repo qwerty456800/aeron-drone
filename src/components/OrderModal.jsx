@@ -1,9 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 import "../styles/order-modal.css";
+import { useLanguage } from "../i18n/LanguageContext.jsx";
 
-const UNIT_PRICE = 1299;
+const COUNTRY_CODES = ["DE", "AT", "CH", "FR", "IT", "ES", "NL", "GB", "US", "JP"];
 
 function OrderModal({ open, onClose }) {
+  const { language, t } = useLanguage();
   const [quantity, setQuantity] = useState(1);
   const [submitted, setSubmitted] = useState(false);
   const firstField = useRef(null);
@@ -23,7 +25,13 @@ function OrderModal({ open, onClose }) {
   }, [open, onClose]);
 
   if (!open) return null;
-  const total = UNIT_PRICE * quantity;
+  let countryName = (code) => code;
+  try {
+    const names = new Intl.DisplayNames([language], { type: "region" });
+    countryName = (code) => names.of(code);
+  } catch {
+    /* Intl.DisplayNames unsupported */
+  }
   return (
     <div
       className="order-modal-backdrop"
@@ -42,62 +50,63 @@ function OrderModal({ open, onClose }) {
           className="order-modal__close"
           type="button"
           onClick={onClose}
-          aria-label="Close order configuration"
+          aria-label={t("orderCloseLabel")}
         >
-          Close ×
+          {t("close")} ×
         </button>
         {submitted ? (
           <div className="order-confirmation">
-            <p className="order-modal__eyebrow">Order system / confirmation</p>
+            <p className="order-modal__eyebrow">
+              LIBTEC / {t("confirmation")}
+            </p>
             <h2>
-              Order request
+              {t("orderConfigurationWord")}
               <br />
-              <strong>received</strong>
+              <strong>{t("received")}</strong>
             </h2>
             <p className="order-confirmation__product">
-              AERON X1
+              Holybro X650 Development Kit
               <br />
-              Series 01
+              X650
             </p>
             <p>
-              Reference: <strong>AX1-2026-001</strong>
+              {t("reference")} <strong>X650-2026-001</strong>
             </p>
             <p>
-              Your configuration has been registered.
+              {t("registered")}
               <br />
-              An AERON representative will contact you with delivery
-              information.
+              {t("representative")}
             </p>
             <button
               className="order-modal__primary"
               type="button"
               onClick={onClose}
             >
-              Close
+              {t("close")}
             </button>
           </div>
         ) : (
           <div className="order-modal__grid">
             <div className="order-modal__product">
-              <p className="order-modal__eyebrow">LIB TECH / Order system</p>
-              <span className="order-modal__series">X1 / SERIES 01</span>
+              <p className="order-modal__eyebrow">LIBTEC / X650 system</p>
+              <span className="order-modal__series">
+                HOLYBRO / DEVELOPMENT KIT
+              </span>
               <h2 id="order-modal-title">
-                AERON
-                <br />
-                <strong>X1</strong>
+                <strong>X650</strong>
               </h2>
               <p className="order-modal__subtitle">
-                PROFESSIONAL AERIAL SYSTEM
+                HOLYBRO X650 DEVELOPMENT KIT
               </p>
               <div className="order-modal__base">
-                <span>Base configuration</span>
-                <strong>€1,299</strong>
+                <span>{t("baseConfiguration")}</span>
+                <strong>6S / PIXHAWK</strong>
               </div>
               <ul>
-                <li>48 MP camera</li>
-                <li>42 MIN flight</li>
-                <li>15 KM range</li>
-                <li>72 KM/H max speed</li>
+                <li>{t("orderFeatureWheelbase")}</li>
+                <li>{t("orderFeatureBattery")}</li>
+                <li>Pixhawk 6C / 6X</li>
+                <li>{t("orderFeaturePayload")}</li>
               </ul>
             </div>
             <form
@@ -107,53 +116,53 @@ function OrderModal({ open, onClose }) {
                 setSubmitted(true);
               }}
             >
-              <p className="order-modal__eyebrow">Order configuration</p>
+              <p className="order-modal__eyebrow">{t("orderConfiguration")}</p>
               <div className="order-form__fields">
                 <label>
-                  First name
+                  {t("firstName")}
                   <input ref={firstField} required name="firstName" />
                 </label>
                 <label>
-                  Last name
+                  {t("lastName")}
                   <input required name="lastName" />
                 </label>
                 <label>
-                  Email
-                  <input required name="email" type="email" />
+                  {t("email")}
+                  <input
+                    required
+                    name="email"
+                    type="email"
+                    autoComplete="email"
+                  />
                 </label>
                 <label>
-                  Phone
-                  <input required name="phone" type="tel" />
+                  {t("phone")}
+                  <input required name="phone" type="tel" autoComplete="tel" />
                 </label>
                 <label className="order-form__full">
-                  Country
+                  {t("country")}
                   <select required name="country" defaultValue="">
                     <option value="" disabled>
-                      Select country
+                      {t("selectCountry")}
                     </option>
-                    <option>Germany</option>
-                    <option>France</option>
-                    <option>Italy</option>
-                    <option>Spain</option>
-                    <option>Netherlands</option>
-                    <option>Austria</option>
-                    <option>Switzerland</option>
-                    <option>United Kingdom</option>
-                    <option>United States</option>
-                    <option>Japan</option>
-                    <option>Other</option>
+                    {COUNTRY_CODES.map((code) => (
+                      <option key={code} value={code}>
+                        {countryName(code)}
+                      </option>
+                    ))}
+                    <option value="OTHER">{t("countryOther")}</option>
                   </select>
                 </label>
               </div>
               <div className="order-quantity">
-                <span>Quantity</span>
+                <span>{t("quantity")}</span>
                 <div>
                   <button
                     type="button"
                     onClick={() =>
                       setQuantity((value) => Math.max(1, value - 1))
                     }
-                    aria-label="Decrease quantity"
+                    aria-label={t("quantityDecrease")}
                   >
                     −
                   </button>
@@ -161,7 +170,7 @@ function OrderModal({ open, onClose }) {
                   <button
                     type="button"
                     onClick={() => setQuantity((value) => value + 1)}
-                    aria-label="Increase quantity"
+                    aria-label={t("quantityIncrease")}
                   >
                     +
                   </button>
@@ -169,20 +178,20 @@ function OrderModal({ open, onClose }) {
               </div>
               <div className="order-summary">
                 <div>
-                  <span>Subtotal</span>
-                  <strong>€{total.toLocaleString("de-DE")}</strong>
+                  <span>{t("subtotal")}</span>
+                  <strong>{t("onRequest")}</strong>
                 </div>
                 <div>
-                  <span>Delivery</span>
-                  <small>Calculated after confirmation</small>
+                  <span>{t("delivery")}</span>
+                  <small>{t("calculated")}</small>
                 </div>
                 <div>
-                  <span>Total</span>
-                  <strong>€{total.toLocaleString("de-DE")}</strong>
+                  <span>{t("total")}</span>
+                  <strong>{t("onRequest")}</strong>
                 </div>
               </div>
               <button className="order-modal__primary" type="submit">
-                Submit order request
+                {t("submitOrder")}
               </button>
             </form>
           </div>

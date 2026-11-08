@@ -10,71 +10,79 @@ gsap.registerPlugin(ScrollTrigger);
 const systems = [
   {
     index: "01",
-    labelKey: "optical",
-    titleKey: "precisionImaging",
-    value: "48",
-    unit: "MP",
+    labelKey: "technologyAirframe",
+    titleKey: "technologyCarbonPlatform",
+    value: "650",
+    unit: "MM",
     description: {
-      de: "Hochauflösende Luftbildgebung für Inspektion, Kartierung und detaillierte visuelle Erfassung.",
-      en: "High-resolution aerial imaging engineered for inspection, mapping and detailed visual capture.",
+      de: "Carbonfaser-Rahmen mit 650 mm Radstand für stabile Flugentwicklung und modulare Nutzlastintegration.",
+      en: "Carbon fiber frame with a 650 mm wheelbase for stable flight development and modular payload integration.",
     },
     metadata: {
-      de: ["Sensor / 48 MP", "Stabilisierung / Aktiv", "Aufnahme / RAW + 4K"],
-      en: ["Sensor / 48 MP", "Stabilization / Active", "Capture / RAW + 4K"],
+      de: ["Flugsteuerung / Pixhawk", "GPS / M10", "Rahmen / Carbonfaser"],
+      en: ["Flight controller / Pixhawk", "GPS / M10", "Frame / Carbon fiber"],
     },
-    callout: "CAM / 48 MP",
+    callout: "X650 / CORE",
   },
   {
     index: "02",
-    labelKey: "flightCore",
-    titleKey: "flightControl",
-    value: "72",
-    unit: "KM/H",
+    labelKey: "technologyPowerSystem",
+    titleKey: "technologyPowerIntegration",
+    value: "6S",
+    unit: "LIPO",
     description: {
-      de: "Echtzeit-Flugverarbeitung gewährleistet Stabilität, Reaktionsfähigkeit und Kontrolle unter wechselnden Bedingungen.",
-      en: "Real-time flight processing maintains stability, response and control across changing conditions.",
+      de: "6S-LiPo-Kompatibilität, integrierte Stromverteilung und flexible Montageflächen unterstützen die Systemintegration.",
+      en: "6S LiPo compatibility, integrated power distribution and flexible mounting surfaces support system integration.",
     },
     metadata: {
-      de: [
-        "Steuerung / Echtzeit",
-        "Stabilität / Aktiv",
-        "Höchstgeschw. / 72 KM/H",
-      ],
-      en: ["Control / Real-time", "Stability / Active", "Max speed / 72 KM/H"],
+      de: ["Plattform / Geräumig", "Schienen / Integriert", "Akku / 6S LiPo"],
+      en: ["Platform / Spacious", "Rails / Integrated", "Battery / 6S LiPo"],
     },
-    callout: "CORE / ACTIVE",
+    callout: "X650 / INTEGRATION",
   },
   {
     index: "03",
-    labelKey: "powerSystem",
-    titleKey: "extendedFlight",
-    value: "42",
-    unit: "MIN",
+    labelKey: "technologyPayload",
+    titleKey: "technologyPayloadCapacity",
+    value: "3.1",
+    unit: "KG*",
     description: {
-      de: "Hochdichte Energiearchitektur für längere Einsätze, ohne die Flugleistung zu beeinträchtigen.",
-      en: "High-density power architecture designed for longer missions without compromising aircraft performance.",
+      de: "Bis zu 3,1 kg Nutzlast mit 6S-10000-mAh-Akku-Konfiguration. Konfigurationsabhängiger Maximalwert.",
+      en: "Up to 3.1 kg payload with the 6S 10000 mAh battery configuration. Configuration-dependent maximum.",
     },
     metadata: {
-      de: ["Flugzeit / 42 MIN", "Energie / Hohe Dichte", "Status / Nominal"],
-      en: ["Flight time / 42 MIN", "Power / High-density", "Status / Nominal"],
+      de: ["Nutzlast / Bis 3,1 KG", "Akku / 6S 10000 mAh", "Wert / Maximal*"],
+      en: [
+        "Payload / Up to 3.1 KG",
+        "Battery / 6S 10000 mAh",
+        "Value / Maximum*",
+      ],
     },
-    callout: "PWR / 42 MIN",
+    callout: "X650 / PAYLOAD",
   },
   {
     index: "04",
-    labelKey: "transmission",
-    titleKey: "longRange",
-    value: "15",
-    unit: "KM",
+    labelKey: "technologyEndurance",
+    titleKey: "technologyFlightEndurance",
+    value: "30",
+    unit: "MIN*",
     description: {
-      de: "Telemetrie und Steuerdaten mit geringer Latenz gewährleisten eine zuverlässige Verbindung über große Einsatzdistanzen.",
-      en: "Low-latency telemetry and control transmission maintains a reliable aircraft link across extended operating range.",
+      de: "Bis zu 30 Minuten Flugausdauer, abhängig von Akkukonfiguration, Nutzlast und Betriebsbedingungen.",
+      en: "Up to 30 minutes of flight endurance, depending on battery configuration, payload and operating conditions.",
     },
     metadata: {
-      de: ["Reichweite / 15 KM", "Telemetrie / Live", "Verbindung / Sicher"],
-      en: ["Control range / 15 KM", "Telemetry / Live", "Link / Secure"],
+      de: [
+        "Flugzeit / 30 MIN*",
+        "Motoren / MN4014 KV330",
+        "Propeller / 1555 Carbon",
+      ],
+      en: [
+        "Flight time / 30 MIN*",
+        "Motors / MN4014 KV330",
+        "Propellers / 1555 Carbon",
+      ],
     },
-    callout: "LINK / 15 KM",
+    callout: "X650 / ENDURANCE",
   },
 ];
 
@@ -181,7 +189,7 @@ function Technology() {
               </>
             )}
           </h2>
-          <p className="technology-subtitle">AERON X1 / {t("techPlatform")}</p>
+          <p className="technology-subtitle">X650 / {t("techPlatform")}</p>
         </div>
         <div className="technology-visual">
           <div className="technology-grid" />

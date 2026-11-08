@@ -15,9 +15,14 @@
   margin-bottom: 1.75rem;
   font-size: 0.72rem;
 }
+.specifications-header > * {
+  min-width: 0;
+}
 .specifications-header h2 {
   margin: 0 0 1.75rem;
-  font-size: clamp(3.5rem, 8vw, 8rem);
+  hyphens: auto;
+  overflow-wrap: break-word;
+  font-size: clamp(3.5rem, 7vw, 7rem);
   font-weight: 400;
   letter-spacing: -0.09em;
   line-height: 0.82;
@@ -93,9 +98,14 @@
   flex-direction: column;
   gap: 0.75rem;
   min-width: 0;
+  padding: 0.4rem;
+  transition: background-color 180ms ease;
+}
+.specification-item:hover {
+  background: rgba(255, 255, 255, 0.035);
 }
 .specification-item span {
-  color: var(--color-text-secondary);
+  color: #aeb4bc;
   font-family: monospace;
   font-size: 0.58rem;
   letter-spacing: 0.1em;
@@ -121,6 +131,15 @@
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
+.specifications-disclaimer {
+  max-width: 54rem;
+  margin: 1.25rem 0 0;
+  color: var(--color-text-secondary);
+  font-family: monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.02em;
+  line-height: 1.6;
+}
 @media (max-width: 900px) {
   .specifications-header {
     grid-template-columns: 1fr;
@@ -143,7 +162,7 @@
     padding-block: 5rem 3rem;
   }
   .specifications-header h2 {
-    font-size: clamp(3rem, 15vw, 5rem);
+    font-size: clamp(2.4rem, 12.5vw, 5rem);
   }
   .specification-group {
     grid-template-columns: 1fr;
@@ -158,6 +177,9 @@
     flex-direction: column;
     gap: 0.75rem;
     font-size: 0.5rem;
+  }
+  .specifications-disclaimer {
+    font-size: 0.65rem;
   }
 }
 html[data-language="de"] .specification-item,

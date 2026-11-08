@@ -1,12 +1,19 @@
-import { Component, Suspense, useEffect, useMemo, useRef } from "react";
+import {
+  Component,
+  Suspense,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
-import { Html, OrbitControls, useGLTF } from "@react-three/drei";
+import { OrbitControls, useGLTF } from "@react-three/drei";
 import * as THREE from "three";
 import { isWebGLAvailable } from "./webgl.js";
 
 const MODEL_PATH = "/models/aeron-x1.glb";
 
-function DroneModel() {
+function DroneModel({ onReady }) {
   const { scene } = useGLTF(MODEL_PATH);
   const group = useRef();
   const { gl } = useThree();
@@ -37,6 +44,10 @@ function DroneModel() {
     return clone;
   }, [maxAnisotropy, scene]);
 
+  useEffect(() => {
+    onReady?.();
+  }, [onReady]);
+
   useFrame((state, delta) => {
     if (!group.current) return;
 
@@ -52,14 +63,6 @@ function DroneModel() {
     <group ref={group} rotation={[0.04, -0.28, 0]}>
       <primitive object={model} />
     </group>
-  );
-}
-
-function LoadingState() {
-  return (
-    <Html center>
-      <span className="model-loading">Initializing model</span>
-    </Html>
   );
 }
 
@@ -82,7 +85,7 @@ class ViewerErrorBoundary extends Component {
 const DEFAULT_CAMERA_POSITION = new THREE.Vector3(0, 0.25, 6.6);
 const DEFAULT_TARGET = new THREE.Vector3(0, 0, 0);
 
-function DroneScene() {
+function DroneScene({ onReady }) {
   const controls = useRef();
   const resetTimer = useRef();
   const returnState = useRef({
@@ -158,8 +161,8 @@ function DroneScene() {
         distance={8}
         color="#dce3e3"
       />
-      <Suspense fallback={<LoadingState />}>
-        <DroneModel />
+      <Suspense fallback={null}>
+        <DroneModel onReady={onReady} />
       </Suspense>
       <OrbitControls
         ref={controls}
@@ -178,19 +181,25 @@ function DroneScene() {
 }
 
 function DroneViewer() {
+  const [ready, setReady] = useState(false);
+  const handleReady = useMemo(() => () => setReady(true), []);
+
   if (!isWebGLAvailable()) {
     return (
       <div
         className="drone-canvas drone-canvas--fallback"
-        aria-label="AERON X1 static technical view"
+        aria-label="X650 static technical view"
       >
-        <span> AERON X1 / STATIC VIEW </span>
+        <span> X650 / STATIC VIEW </span>
       </div>
     );
   }
 
   return (
-    <div className="drone-canvas" aria-label="Interactive AERON X1 3D model">
+    <div
+      className="drone-canvas"
+      aria-label="Interactive X650 3D visualization"
+    >
       <ViewerErrorBoundary>
         <Canvas
           camera={{ fov: 35, position: [0, 0.25, 6.6] }}
@@ -207,9 +216,14 @@ function DroneViewer() {
             gl.toneMappingExposure = 1;
           }}
         >
-          <DroneScene />
+          <DroneScene onReady={handleReady} />
         </Canvas>
       </ViewerErrorBoundary>
+      {!ready && (
+        <span className="model-loading" aria-hidden="true">
+          Initializing model
+        </span>
+      )}
     </div>
   );
 }

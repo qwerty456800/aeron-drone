@@ -5,10 +5,10 @@ import "../styles/products.css";
 import { useLanguage } from "../i18n/LanguageContext.jsx";
 
 const specs = [
-  ["48", "MP", "productImaging"],
-  ["42", "MIN", "productFlight"],
-  ["15", "KM", "productRange"],
-  ["72", "KM/H", "productSpeed"],
+  ["650", "MM", "wheelbase"],
+  ["30", "MIN*", "flightTimeX650"],
+  ["6300", "G*", "takeoffWeight"],
+  ["3.1", "KG*", "payload"],
 ];
 
 function Products() {
@@ -20,21 +20,11 @@ function Products() {
         <div className="product-copy">
           <p className="product-eyebrow">03 / {t("aircraft")}</p>
           <h2>
-            AERON
-            <br />
-            <strong>X1</strong>
+            <strong>X650</strong>
           </h2>
-          <p className="product-type">
-            {t("professional").toUpperCase()}
-            <br />
-            {t("aerialSystem").toUpperCase()}
-          </p>
-          <p className="product-description">
-            {t("precision")}
-            <br />
-            {t("perspective")}
-          </p>
-          <span className="product-id">X1-2026 / SERIES 01</span>
+          <p className="product-type">{t("productFullName")}</p>
+          <p className="product-description">{t("productDescription")}</p>
+          <span className="product-id">X650 / DEVELOPMENT KIT</span>
           <div className="product-actions">
             <button
               className="product-order"
@@ -46,13 +36,13 @@ function Products() {
             <a href="#technology">{t("explore")}</a>
           </div>
           <div className="product-purchase-meta">
-            <span>Available / 2026</span>
-            <span>System / X1</span>
-            <span>Status / Ready</span>
+            <span>HOLYBRO / X650</span>
+            <span>6S LIPO / XT60</span>
+            <span>{t("officialNote")}</span>
           </div>
         </div>
         <ProductDrone />
-        <div className="product-specs" aria-label="AERON X1 specifications">
+        <div className="product-specs" aria-label="X650 specifications">
           {specs.map(([value, unit, labelKey]) => (
             <div className="product-spec" key={labelKey}>
               <strong>
@@ -63,7 +53,7 @@ function Products() {
             </div>
           ))}
         </div>
-        <div className="product-price">€1,299</div>
+        <div className="product-price">KIT / X650</div>
       </div>
       <OrderModal
         key={orderOpen ? "open" : "closed"}
